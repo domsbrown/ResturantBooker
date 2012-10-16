@@ -1,0 +1,10 @@
+﻿@using ResturantBooker.Models.Enum
+@model ResturantBooker.Models.Enum.Day
+
+@{
+	var options = (from Day day in Enum.GetValues(typeof(Day))
+                       select new SelectListItem{ Text = day.ToString(), Value = day.ToString()}).ToList();
+}
+
+
+@Html.DropDownListFor(model => model, options)

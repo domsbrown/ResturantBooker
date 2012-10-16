@@ -1,0 +1,35 @@
+﻿@model ResturantBooker.Models.RestaurantBooking
+
+@{
+	ViewBag.Title = "title";
+}
+
+<h1>Resturant Booker</h1>
+
+@using (Html.BeginForm()) {
+	<p>
+		@Html.LabelFor(model => model.PersonName)
+		@Html.EditorFor(model => model.PersonName)
+        @Html.ValidationMessageFor(model => model.PersonName)
+	</p>
+    
+	<p>
+		@Html.LabelFor(model => model.Meal)
+		@Html.EditorFor(model => model.Meal)
+        @Html.ValidationMessageFor(model => model.Meal)
+	</p>
+    
+	<p>
+		@Html.LabelFor(model => model.ExtraOption)
+		@Html.EditorFor(model => model.ExtraOption)
+        @Html.ValidationMessageFor(model => model.ExtraOption)
+	</p>
+    
+	<p>
+		@Html.LabelFor(model => model.Day)
+		@Html.EditorFor(model => model.Day)
+        @Html.ValidationMessageFor(model => model.Day)
+	</p>
+    
+    <input type="submit" value="submit"/>
+}
