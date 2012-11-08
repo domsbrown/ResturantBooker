@@ -1,0 +1,28 @@
+﻿@model ResturantBooker.Models.ViewModels.AdminBreadsViewModel
+
+@{
+    ViewBag.Title = "Admin - Add Breads";
+}
+
+<h1>@ViewBag.Message</h1>
+@section Menu
+{
+    @Html.Partial("Navigation/SideMenu")
+}
+@Html.Partial("AddItem")
+
+
+
+<table>
+        <tr>
+            <td>Bread1</td>
+            <td>Price</td>
+        </tr>
+        @foreach (var loaf in Model.Loafs)
+        {
+            <tr>
+                <td>@loaf.Bread1</td>
+                <td>@loaf.Price</td>
+            </tr>
+        }
+</table>

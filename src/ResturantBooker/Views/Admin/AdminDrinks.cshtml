@@ -1,0 +1,12 @@
+﻿@model ResturantBooker.Models.ViewModels.AdminDrinksViewModel
+@{
+	ViewBag.Title = "Admin - Add Drinks";
+}
+
+
+<h1>@ViewBag.Message</h1>
+@section Menu
+{
+    @Html.Partial("Navigation/SideMenu")
+}
+@Html.Partial("AddItem")

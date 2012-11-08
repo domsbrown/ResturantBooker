@@ -1,0 +1,52 @@
+﻿@model ResturantBooker.Models.ViewModels.AdminFillingsViewModel
+
+@{
+    ViewBag.Title = "Admin - Add Fillings";
+}
+
+
+<h1>@ViewBag.Message</h1>
+@section Menu
+{
+    @Html.Partial("Navigation/SideMenu")
+}
+@Html.Partial("AddItem")
+
+<table class="table table-striped table-bordered">
+	<thead>
+		<th>Fillings</th>
+		<th>Price</th>
+	</thead>
+	<tbody>
+		@foreach (var filling in Model.Fillings)
+			  {
+				  <tr>
+					  <td>@filling.Filling1</td>
+					  <td>&pound;@filling.Price</td>
+				  </tr>
+			  }  		
+	</tbody>
+</table>
+<div class="btn-group">
+  <button class="btn">Page Size</button>
+  <button class="btn dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+  </button>
+	<ul class="dropdown-menu">
+		<li>@Html.ActionLink("10", "AdminFillings", new { pageSize = 10 })</li>
+		<li>@Html.ActionLink("20", "AdminFillings", new { pageSize = 20 })</li>
+		<li>@Html.ActionLink("30", "AdminFillings", new { pageSize = 30 })</li>
+		<li>@Html.ActionLink("40", "AdminFillings", new { pageSize = 40 })</li>
+		<li>@Html.ActionLink("50", "AdminFillings", new { pageSize = 50 })</li>
+	</ul>
+</div>
+<div class="pagination pagination-centered up20px">
+    <ul>
+        @foreach (var page in Model.GetPages())
+        {
+			<li>
+				@Html.ActionLink(page.ToString(), "AdminFillings", new { page = page, pageSize = Model.PageSize })
+			</li>
+        }
+    </ul>
+</div>

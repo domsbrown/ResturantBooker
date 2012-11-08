@@ -1,0 +1,20 @@
+﻿@model ResturantBooker.Models.Admin
+
+@using (Html.BeginForm())
+{
+    <div class="AddItem">
+        <p>
+            @Html.LabelFor(model => model.AddItem)
+            @Html.EditorFor(model => model.AddItem)
+            @Html.ValidationMessageFor(model => model.AddItem)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.Price)
+            @Html.EditorFor(model => model.Price)
+            @Html.ValidationMessageFor(model => model.Price)
+        </p>
+
+        <input type="submit" value="Submit" class="btn" />
+
+    </div>
+}

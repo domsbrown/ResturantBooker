@@ -43,6 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -122,15 +123,40 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DataAccess\Restaurant.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Restaurant.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Enum\Day.cs" />
     <Compile Include="Models\RestaurantBooking.cs" />
+    <Compile Include="Models\ViewModels\AdminBreadsViewModel.cs" />
+    <Compile Include="Models\ViewModels\AdminCondimentsViewModel.cs" />
+    <Compile Include="Models\ViewModels\AdminDrinksViewModel.cs" />
+    <Compile Include="Models\ViewModels\AdminExtrasViewModel.cs" />
+    <Compile Include="Models\ViewModels\AdminFillingsViewModel.cs" />
+    <Compile Include="Models\ViewModels\AdminMealsViewModel.cs" />
+    <Compile Include="Models\ViewModels\AdminSideDishesViewModel.cs" />
+    <Compile Include="Models\ViewModels\AdminSnacksViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\RestaurantBooker.mdf" />
+    <Content Include="App_Data\RestaurantBooker_log.ldf">
+      <DependentUpon>RestaurantBooker.mdf</DependentUpon>
+    </Content>
+    <Content Include="Content\bootstrap-responsive.css" />
+    <Content Include="Content\bootstrap-responsive.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\images\glyphicons-halflings.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -187,7 +213,14 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="DataAccess\Restaurant.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Restaurant.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -216,12 +249,28 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Day.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Shared\Navigation\SideMenu.cshtml" />
+    <Content Include="Views\Admin\AdminSideDishes.cshtml" />
+    <Content Include="Views\Admin\AdminSnacks.cshtml" />
+    <Content Include="Views\Admin\AdminDrinks.cshtml" />
+    <Content Include="Views\Admin\AdminBreads.cshtml" />
+    <Content Include="Views\Admin\AdminCondiments.cshtml" />
+    <Content Include="Views\Admin\AdminExtras.cshtml" />
+    <Content Include="Views\Admin\AdminFillings.cshtml" />
+    <Content Include="Views\Shared\AddItem.cshtml" />
+    <Content Include="Views\Shared\Navigation\TopMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DataAccess\Restaurant.dbml.layout">
+      <DependentUpon>Restaurant.dbml</DependentUpon>
+    </None>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

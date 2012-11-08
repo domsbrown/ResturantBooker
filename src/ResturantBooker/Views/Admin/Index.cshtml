@@ -1,7 +1,68 @@
-﻿@model List<ResturantBooker.Models.RestaurantBooking>
+﻿@model ResturantBooker.Models.ViewModels.AdminMealsViewModel
 
 @{
-	ViewBag.Title = "title";
+	ViewBag.Title = "Admin - Add Meals";
 }
 
-<h1>Meal Bookings</h1>
+<h1>@ViewBag.Message</h1>
+@section Menu
+{
+    @Html.Partial("Navigation/SideMenu")
+}
+@Html.Partial("AddItem")
+
+
+<table class="table table-striped table-bordered">
+	<thead>
+		<th>Day</th>
+		<th>Date</th>
+		<th>Main Meal</th>
+		<th class="centertext">Vegetarian</th>
+		<th class="centertext">Halal</th>
+		<th>Price</th>
+	</thead>
+	<tbody>
+		@foreach(var meal in Model.Meals)
+		{
+			<tr>
+				<td>@meal.Day</td>
+				<td>@meal.Date</td>
+				<td>@meal.Meal</td>
+				<td class="tick">
+					@if (meal.Vegetarian == 1) {
+							  <text>&#10004;</text>
+					}
+				</td>
+				<td class="tick">
+					@if (meal.Halal == 1) {
+							  <text>&#10004;</text>
+					}
+				</td>
+				<td>&pound;@meal.Price</td>
+			</tr>	
+		}
+	</tbody>
+</table>
+<div class="btn-group">
+  <button class="btn">Page Size</button>
+  <button class="btn dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+  </button>
+	<ul class="dropdown-menu">
+		<li>@Html.ActionLink("10", "Index", new { pageSize = 10 })</li>
+		<li>@Html.ActionLink("20", "Index", new { pageSize = 20 })</li>
+		<li>@Html.ActionLink("30", "Index", new { pageSize = 30 })</li>
+		<li>@Html.ActionLink("40", "Index", new { pageSize = 40 })</li>
+		<li>@Html.ActionLink("50", "Index", new { pageSize = 50 })</li>
+	</ul>
+</div>
+<div class="pagination pagination-centered up20px">
+    <ul>
+        @foreach (var page in Model.GetPages())
+        {
+			<li>
+				@Html.ActionLink(page.ToString(), "Index", new { page = page, pageSize = Model.PageSize })
+			</li>
+        }
+    </ul>
+</div>
